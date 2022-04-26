@@ -1,0 +1,29 @@
+{
+  "name": "akamsi",
+  "version": "1.0.0",
+  "description": "Powerful Telegram Automation to make your daily activities easier",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "rollup --config rollup.config.ts --configPlugin typescript",
+    "watch": "rollup --config rollup.config.ts --configPlugin typescript --watch"
+  },
+  "keywords": [
+    "Akamsi",
+    "Telegram",
+    "Userbot"
+  ],
+  "author": "Irlan Arvila",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.2",
+    "@types/node": "^17.0.26",
+    "rollup": "^2.70.2",
+    "telegram": "^2.6.13",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0"
+  }
+}
