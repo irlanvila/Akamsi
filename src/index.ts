@@ -1,4 +1,4 @@
-import { client, TelegramClient } from "telegram";
+import { TelegramClient } from "telegram";
 import "dotenv/config"; // https://github.com/motdotla/dotenv/#how-do-i-use-dotenv-with-import
 import { StringSession } from "telegram/sessions/index.js";
 import loadModules from "./modules";
@@ -10,23 +10,23 @@ const PREFIX = process.env.PREFIX;
 const CHAT_LOG = process.env.CHAT_LOG;
 
 let clientAddEventHandler: any;
+console.log("Loading interactive example...");
+const client = new TelegramClient(STRING_SESSION, API_ID, API_HASH, {
+  connectionRetries: 5,
+});
 
 (async () => {
-  console.log("Loading interactive example...");
-  const client = new TelegramClient(STRING_SESSION, API_ID, API_HASH, {
-    connectionRetries: 5,
-  });
   await client.connect();
   console.log("You should now be connected.");
   await client.sendMessage(CHAT_LOG, {
-    message: "`Akamsi Userbot has been activate!`",
+    message: "`Akamsi Userbot has been activated!`",
   });
 
   // Prevent "Property 'addEventHandler' does not exist inside modules directory"
   clientAddEventHandler = (moduleName: any, hh: any) => {
     client.addEventHandler(moduleName, hh);
   };
-  await loadModules();
+  loadModules();
 })();
 
 export { PREFIX, clientAddEventHandler };
