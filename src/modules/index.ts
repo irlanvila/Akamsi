@@ -3,9 +3,13 @@ import { clientAddEventHandler } from "../index";
 import limit from "./limit";
 import ping from "./ping";
 
+const modules = [limit, ping];
+
 function loadModules() {
-  clientAddEventHandler(limit, new NewMessage({}));
-  clientAddEventHandler(ping, new NewMessage({}));
+  modules.forEach((module) =>
+    clientAddEventHandler(module, new NewMessage({}))
+  );
 }
 
+export { modules };
 export default loadModules;
