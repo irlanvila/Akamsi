@@ -12,6 +12,10 @@ async function ping(event: NewMessageEvent) {
       });
     });
   }
+
+  if (message.message === `${PREFIX}help ping`) {
+    await message.edit({ text: `\`Test your connection\`` });
+  }
 }
 
 export default ping;

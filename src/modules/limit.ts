@@ -19,6 +19,10 @@ async function limit(event: NewMessageEvent) {
       }
     }, new NewMessage({}));
   }
+
+  if (message.message === `${PREFIX}help limit`) {
+    await message.edit({ text: `\`Check your current limit\`` });
+  }
 }
 
 export default limit;
