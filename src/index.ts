@@ -27,14 +27,16 @@ const client = new TelegramClient(STRING_SESSION, API_ID, API_HASH, {
     client.addEventHandler(moduleName, hh);
   };
 
-  // Create Supergroup for the first time user activate their bot
-  const chatLog: Api.Updates = await client.invoke(
-    new Api.channels.CreateChannel({
-      megagroup: true,
-      title: "AKAMSI USERBOT LOGS",
-      about: "A group to save your bot logs",
-    })
-  );
+  if (!"GROUP_CHAT" in process.env) {
+    // Create Supergroup for the first time user activate their bot
+    const chatLog: Api.Updates = await client.invoke(
+      new Api.channels.CreateChannel({
+        megagroup: true,
+        title: "AKAMSI USERBOT LOGS",
+        about: "A group to save your bot logs",
+      })
+    );
+  }
 
   loadModules();
 })();
